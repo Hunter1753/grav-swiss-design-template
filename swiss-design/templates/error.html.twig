@@ -1,0 +1,23 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<article class="project-post" style="text-align: center; margin-top: 4rem;">
+    <header class="project-header" style="border-bottom: 3px solid var(--line-color);">
+        {# Grav automatically passes the error code (e.g., 404) here #}
+        <h1 style="font-size: 5rem; margin-bottom: 0; margin-top: 0;">
+            {{ page.header.http_response_code|default('404') }}
+        </h1>
+        <div class="project-meta" style="justify-content: center; margin-bottom: 1.5rem;">
+            <span class="meta-item">STATUS: <strong>DOCUMENT_NOT_FOUND</strong></span>
+        </div>
+    </header>
+
+    <section class="project-body" style="margin-top: 2rem;">
+        <p>The requested document has been misplaced, redacted, or never existed in this archive.</p>
+        
+        <p style="margin-top: 3rem; font-family: 'Courier New', Courier, monospace;">
+            <a href="{{ base_url == '' ? '/' : base_url }}">&larr; Return to Home</a>
+        </p>
+    </section>
+</article>
+{% endblock %}
