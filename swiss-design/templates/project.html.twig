@@ -1,0 +1,50 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<article class="project-post">
+    <header class="project-header">
+        <h1>{{ page.title }}</h1>
+        
+        <div class="project-meta">
+            {% if page.header.taxonomy.category %}
+                <span class="meta-item">Section: <strong>{{ page.header.taxonomy.category|first|capitalize }}</strong></span>
+            {% endif %}
+            
+            {% if page.header.time_spent %}
+                <span class="meta-item">Time: <strong>{{ page.header.time_spent }}</strong></span>
+            {% endif %}
+            
+            {% if page.header.taxonomy.series %}
+                <span class="meta-item">Series: <strong>{{ page.header.taxonomy.series }}</strong></span>
+            {% endif %}
+        </div>
+
+        {% if page.header.tools %}
+        <div class="project-tools">
+            <strong>Tools used:</strong>
+            {% for tool in page.header.tools %}
+                <code>{{ tool.name }}</code>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+
+    <section class="project-body">
+        {{ page.content|raw }}
+    </section>
+
+    {% if page.header.show_gallery and page.media.images|length > 0 %}
+    <footer class="project-gallery">
+        <h3>Project Gallery</h3>
+        <div class="gallery-grid">
+            {% for image in page.media.images %}
+                {# Links directly to the raw image, no JS lightbox #}
+                <a href="{{ image.url }}" target="_blank">
+                    {{ image.cropZoom(300, 300).html('','','gallery-img')|raw }}
+                </a>
+            {% endfor %}
+        </div>
+    </footer>
+    {% endif %}
+</article>
+{% endblock %}

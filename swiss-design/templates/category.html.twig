@@ -1,0 +1,28 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<div class="category-archive">
+    <header class="category-header">
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.content|raw }}</p>
+    </header>
+    <hr>
+    
+    <div class="dashboard">
+        <section class="main-column" style="grid-column: 1 / -1;">
+            {% set collection = page.collection() %}
+            {% for p in collection %}
+                <article class="preview-block">
+                    <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
+                    <div class="project-meta">
+                        {% if p.header.time_spent %}
+                            <span class="meta-item">Time: <strong>{{ p.header.time_spent }}</strong></span>
+                        {% endif %}
+                    </div>
+                    {{ p.summary(250)|raw }}
+                </article>
+            {% endfor %}
+        </section>
+    </div>
+</div>
+{% endblock %}

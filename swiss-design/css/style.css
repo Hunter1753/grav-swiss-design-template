@@ -1,0 +1,161 @@
+/* Swiss Minimalist / Vintage Print */
+:root {
+    --bg-color: #f7f5f0;       /* Off-white paper */
+    --text-color: #2c2c2c;     /* Soft black ink */
+    --accent-color: #a84b32;   /* Faded brick red for links */
+    --line-color: #2c2c2c;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Georgia", "Times New Roman", serif; /* Classic manual feel */
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: normal;
+    margin-top: 2rem;
+}
+
+code, pre {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #eaddd3; /* Slightly darker cream for code */
+    padding: 2px 4px;
+    font-size: 0.9em;
+}
+
+pre {
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid var(--line-color);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-color);
+}
+
+a:hover {
+    border-bottom-style: solid;
+}
+
+/* Structural Styling (Thick/Thin manual lines) */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 3px solid var(--line-color);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: none;
+    color: var(--text-color);
+}
+
+.project-header {
+    border-bottom: 1px solid var(--line-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.project-meta {
+    font-family: "Courier New", Courier, monospace; /* Typewriter metadata */
+    font-size: 0.9rem;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-tools {
+    font-size: 0.9rem;
+}
+
+/* Native Image Grid (No JS) */
+.project-gallery h3 {
+    border-top: 1px solid var(--line-color);
+    padding-top: 1rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.gallery-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line-color);
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+.section-title {
+    border-bottom: 2px solid var(--line-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post Previews */
+.preview-block {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dotted var(--line-color);
+}
+
+.featured-block {
+    border: 1px solid var(--line-color);
+    padding: 1.5rem;
+    background-color: #fff; /* Slight contrast from off-white bg */
+}
+
+.preview-block h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Microblog Stream */
+.micro-post {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.micro-date {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    border-bottom: 1px solid var(--line-color);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.micro-content p {
+    margin-top: 0;
+}
+
+/* Responsive: Stack columns on mobile */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

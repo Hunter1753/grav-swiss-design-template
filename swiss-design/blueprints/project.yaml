@@ -1,0 +1,66 @@
+title: Project
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          fields:
+            # We add a custom section for metadata
+            header.project_meta:
+              type: section
+              title: Project Details
+              underline: true
+
+            header.taxonomy.category:
+              type: select
+              label: Category
+              classes: fancy
+              options:
+                analog: Analog
+                digital: Digital
+              help: "Does this belong in the Analog or Digital section?"
+
+            header.tools:
+              type: list
+              label: Tools Used
+              style: vertical
+              fields:
+                .name:
+                  type: text
+                  label: Tool Name (e.g., C++, Watercolors)
+
+            header.time_spent:
+              type: text
+              label: Time Spent
+              placeholder: "e.g., 3 weeks, 10 hours"
+              size: small
+
+            header.taxonomy.series:
+              type: text
+              label: Series / Project Name
+              help: "If this is an update, type the master project name here (e.g., 'Custom OS')"
+
+            header.featured:
+              type: toggle
+              label: Feature in Homepage Showcase?
+              highlight: 1
+              default: 0
+              options:
+                1: 'Yes'
+                0: 'No'
+
+            header.show_gallery:
+              type: toggle
+              label: Append Gallery to Bottom?
+              help: "If yes, all images in this folder will be displayed in a grid at the end of the post."
+              highlight: 0
+              default: 0
+              options:
+                1: 'Yes'
+                0: 'No'

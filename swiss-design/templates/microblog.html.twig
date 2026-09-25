@@ -1,0 +1,23 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<div class="microblog-archive">
+    <h1>Microblog Archive</h1>
+    <hr>
+    
+    {% set collection = page.collection() %}
+    {% for m in collection %}
+        <div class="micro-post archive-post">
+            <div class="micro-date">{{ m.date|date("M d, Y") }}</div>
+            <div class="micro-content">
+                {{ m.content|raw }}
+            </div>
+        </div>
+    {% endfor %}
+    
+    {# Grav Pagination #}
+    {% if config.plugins.pagination.enabled and collection.params.pagination %}
+        {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+    {% endif %}
+</div>
+{% endblock %}
