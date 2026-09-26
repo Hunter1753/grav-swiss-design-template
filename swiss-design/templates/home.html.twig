@@ -4,42 +4,72 @@
 <div class="dashboard">
     <section class="main-column">
         
-        {# SHOWCASE: Pulls any project where featured is toggled on #}
+        {# Fix: Properly collect Analog OR Digital projects #}
+        {% set all_projects = page.collection({
+            'items': [
+                {'@taxonomy': {'category': 'analog'}},
+                {'@taxonomy': {'category': 'digital'}}
+            ]
+        }) %}
+
+        {# SHOWCASE #}
         <h2 class="section-title">Showcase</h2>
-        {% set showcase = taxonomy.findTaxonomy({'category': ['analog', 'digital']}) %}
-        {% for p in showcase if p.header.featured %}
+        {% set has_showcase = false %}
+        
+        {% for p in all_projects if p.header.featured %}
+            {% set has_showcase = true %}
             <article class="preview-block featured-block">
                 <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
-                <p><em>{{ p.header.taxonomy.category|first|capitalize }} &mdash; {{ p.header.time_spent }}</em></p>
+                <p>
+                    <em>
+                        {{ p.header.taxonomy.category|first|capitalize|default('Project') }}
+                        {% if p.header.time_spent %}
+                            &mdash; Time spent: {{ p.header.time_spent }}
+                        {% endif %}
+                    </em>
+                </p>
                 {{ p.summary(200)|raw }}
             </article>
         {% endfor %}
 
-        {# LATEST: Pulls the 5 newest projects overall #}
+        {% if not has_showcase %}
+            <p style="margin-bottom: 2rem;"><em>No featured projects selected yet.</em></p>
+        {% endif %}
+
+        {# LATEST #}
         <h2 class="section-title">Latest Projects</h2>
-        {% set projects = taxonomy.findTaxonomy({'category': ['analog', 'digital']}).order('date', 'desc').slice(0, 5) %}
-        {% for p in projects %}
+        {% set latest_projects = all_projects.order('date', 'desc').slice(0, 5) %}
+        
+        {% for p in latest_projects %}
             <article class="preview-block">
                 <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
                 {{ p.summary(150)|raw }}
             </article>
+        {% else %}
+            <p><em>No projects found.</em></p>
         {% endfor %}
         
     </section>
 
     <aside class="microblog-column">
         <h2 class="section-title">Microblog</h2>
-        {# Pulls all child pages from the hidden /microblog folder #}
-        {% set micro_posts = page.find('/microblog').children.order('date', 'desc').slice(0, 10) %}
+        {% set microblog_page = page.find('/microblog') %}
         
-        {% for m in micro_posts %}
-            <div class="micro-post">
-                <div class="micro-date">{{ m.date|date("M d, Y") }}</div>
-                <div class="micro-content">
-                    {{ m.content|raw }}
+        {% if microblog_page %}
+            {% set micro_posts = microblog_page.children.order('date', 'desc').slice(0, 10) %}
+            {% for m in micro_posts %}
+                <div class="micro-post">
+                    <div class="micro-date">{{ m.date|date("Y-m-d, H:i") }}</div>
+                    <div class="micro-content">
+                        {{ m.content|raw }}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% else %}
+                <p><em>No updates yet.</em></p>
+            {% endfor %}
+        {% else %}
+            <p><em>Microblog folder missing.</em></p>
+        {% endif %}
         
         <a href="{{ base_url }}/microblog" class="view-all">View Archive &rarr;</a>
     </aside>

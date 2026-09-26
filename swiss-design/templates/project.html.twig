@@ -6,12 +6,14 @@
         <h1>{{ page.title }}</h1>
         
         <div class="project-meta">
+            <span class="meta-item">Published: <strong>{{ page.date|date("Y-m-d") }}</strong></span>
+
             {% if page.header.taxonomy.category %}
                 <span class="meta-item">Section: <strong>{{ page.header.taxonomy.category|first|capitalize }}</strong></span>
             {% endif %}
             
             {% if page.header.time_spent %}
-                <span class="meta-item">Time: <strong>{{ page.header.time_spent }}</strong></span>
+                <span class="meta-item">Time spent: <strong>{{ page.header.time_spent }}</strong></span>
             {% endif %}
             
             {% if page.header.taxonomy.series %}

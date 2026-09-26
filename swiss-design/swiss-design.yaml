@@ -1,1 +1,3 @@
 enabled: true
+custom_footer: "Minimal CSS, Zero JS."
+accent_color: "#a84b32"

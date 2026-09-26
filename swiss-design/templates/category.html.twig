@@ -16,7 +16,7 @@
                     <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
                     <div class="project-meta">
                         {% if p.header.time_spent %}
-                            <span class="meta-item">Time: <strong>{{ p.header.time_spent }}</strong></span>
+                            <span class="meta-item">Time spent: <strong>{{ p.header.time_spent }}</strong></span>
                         {% endif %}
                     </div>
                     {{ p.summary(250)|raw }}

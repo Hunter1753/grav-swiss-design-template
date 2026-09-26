@@ -8,7 +8,7 @@
     {% set collection = page.collection() %}
     {% for m in collection %}
         <div class="micro-post archive-post">
-            <div class="micro-date">{{ m.date|date("M d, Y") }}</div>
+            <div class="micro-date">{{ m.date|date("Y-m-d, H:i") }}</div>
             <div class="micro-content">
                 {{ m.content|raw }}
             </div>

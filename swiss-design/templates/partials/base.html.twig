@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} | {{ site.title }}</title>
     <link rel="stylesheet" href="{{ url('theme://css/style.css') }}">
+    
+    {# This overrides the accent color from style.css with the admin panel choice #}
+    <style>
+        :root {
+            --accent-color: {{ theme_var('accent_color', '#a84b32') }};
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -20,7 +27,8 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; {{ "now"|date("Y") }} | Minimal CSS, Zero JS.</p>
+        {# This injects the custom footer text #}
+        <p>&copy; {{ "now"|date("Y") }} | {{ theme_var('custom_footer', 'Minimal CSS, Zero JS.') }}</p>
     </footer>
 </body>
 </html>
