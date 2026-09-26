@@ -205,3 +205,59 @@ a:hover {
     padding-bottom: 0.75rem;
     border-bottom: 1px dotted var(--line-color);
 }
+
+/* Layout & Sticky Footer Fix */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.site-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 4rem); /* 100vh minus the 2rem top/bottom padding */
+}
+
+.site-main {
+    flex-grow: 1; /* This forces the main content to stretch, pushing the footer down */
+}
+
+/* Nav Menu Spacing */
+.site-nav {
+    display: flex;
+    gap: 1.5rem; /* Spaces out the menu links */
+}
+
+/* Fix Jumping Site Title */
+.site-title {
+    /* We add a transparent border here so it already takes up 1px of vertical space. 
+       When hover changes it to a solid border, the layout doesn't shift. */
+    border-bottom: 1px solid transparent; 
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.site-title:hover {
+    border-bottom: 1px solid var(--text-color);
+}
+
+/* Prevent double dotted rules above the footer */
+.preview-block:last-child,
+.micro-post:last-child,
+.series-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Global Footer Dotted Rule */
+.footer-rule {
+    border: none;
+    border-top: 2px dotted var(--line-color);
+    margin: 3rem 0 1rem 0; /* Creates space between the content and the footer */
+    width: 100%;
+}

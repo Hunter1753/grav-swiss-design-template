@@ -13,10 +13,10 @@
         }
     </style>
 </head>
-<body>
+<body class="site-layout">
     <header class="site-header">
         <a href="{{ base_url == '' ? '/' : base_url }}" class="site-title">{{ site.title|default('My Portfolio') }}</a>
-        <nav>
+        <nav class="site-nav">
             <a href="{{ base_url }}/analog">Analog</a>
             <a href="{{ base_url }}/digital">Digital</a>
             <a href="{{ base_url }}/series">Series</a>
@@ -24,13 +24,14 @@
         </nav>
     </header>
 
-    <main>
+    <main class="site-main">
         {% block content %}{% endblock %}
     </main>
 
+    <hr class="footer-rule">
+
     <footer class="site-footer">
-        {# This injects the custom footer text #}
-        <p>&copy; {{ "now"|date("Y") }} | {{ theme_var('custom_footer', 'Minimal CSS, Zero JS.') }}</p>
+        <p>&copy; {{ "now"|date("Y") }} {{ site.title }} | {{ theme_var('custom_footer', 'Minimal CSS, Zero JS.') }}</p>
     </footer>
 </body>
 </html>

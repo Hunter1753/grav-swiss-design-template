@@ -22,7 +22,7 @@
                 <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
                 <p>
                     <em>
-                        {{ p.header.taxonomy.category|first|capitalize|default('Project') }}
+                        {{ (p.header.taxonomy.category is iterable ? p.header.taxonomy.category|first : p.header.taxonomy.category)|capitalize|default('Project') }}
                         {% if p.header.time_spent %}
                             &mdash; Time spent: {{ p.header.time_spent }}
                         {% endif %}
