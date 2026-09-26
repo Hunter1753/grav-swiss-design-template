@@ -72,7 +72,8 @@ a:hover {
     font-family: "Courier New", Courier, monospace; /* Typewriter metadata */
     font-size: 0.9rem;
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
     margin-bottom: 0.5rem;
 }
 
@@ -152,14 +153,6 @@ a:hover {
     margin-top: 0;
 }
 
-/* Responsive: Stack columns on mobile */
-@media (max-width: 768px) {
-    .dashboard {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-}
-
 /* Forms & Search */
 .search-form {
     display: flex;
@@ -218,7 +211,7 @@ html {
 .site-layout {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 4rem); /* 100vh minus the 2rem top/bottom padding */
+    min-height: 100vh;
 }
 
 .site-main {
@@ -260,4 +253,23 @@ html {
     border-top: 2px dotted var(--line-color);
     margin: 3rem 0 1rem 0; /* Creates space between the content and the footer */
     width: 100%;
+}
+
+/* Responsive: Stack columns on mobile */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .site-nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 }
