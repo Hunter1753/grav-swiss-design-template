@@ -1,5 +1,30 @@
 # grav-swiss-design-template
 
+A clean and simple no js twig theme for [Grav 2](https://github.com/getgrav/grav) inspired by old manuals and the swiss design language.
+
+### Screenshots
+
+Homepage
+![Homepage](assets/Home_swiss-design.png)
+
+Microblog Archive
+![Microblog Archive](assets/Microblog_swiss-design.png)
+
+Category Overview
+![Category Overview](assets/Analog_swiss-design.png)
+
+Search Page
+![Search Page](assets/Search_swiss-design.png)
+
+Series Overview
+![Series Overview](assets/Series_swiss-design.png)
+
+Project With Gallery
+![Project With Gallery](assets/Test_projekt_gallery_swiss-design.png)
+
+Project without Gallery
+![Project without Gallery](assets/Test_projekt_swiss-design.png)
+
 ### Expected layout
 
 ```
@@ -76,6 +101,6 @@ taxonomy:
     category: [digital]
     series: 'Custom OS'
 tools:
-    - name: C
+    - name: C++
     - name: Assembly
     - name: QEMU

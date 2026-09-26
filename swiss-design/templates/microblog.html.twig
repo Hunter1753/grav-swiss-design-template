@@ -13,6 +13,8 @@
                 {{ m.content|raw }}
             </div>
         </div>
+    {% else %}
+        <p><em>No updates have been posted to the microblog yet.</em></p>
     {% endfor %}
     
     {# Grav Pagination #}

@@ -1,0 +1,18 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<article class="micro-post archive-post" style="margin-top: 2rem;">
+    <header style="border-bottom: 1px solid var(--line-color); padding-bottom: 1rem; margin-bottom: 2rem;">
+        <div class="micro-date" style="border: none; margin: 0;">{{ page.date|date("Y-m-d, H:i") }}</div>
+        <h1 style="margin-top: 0.5rem; margin-bottom: 0;">{{ page.title }}</h1>
+    </header>
+    
+    <section class="micro-content">
+        {{ page.content|raw }}
+    </section>
+    
+    <div style="margin-top: 3rem; font-family: 'Courier New', Courier, monospace;">
+        <a href="{{ base_url }}/microblog">&larr; Back to Microblog</a>
+    </div>
+</article>
+{% endblock %}
