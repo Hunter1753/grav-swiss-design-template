@@ -159,3 +159,49 @@ a:hover {
         gap: 2rem;
     }
 }
+
+/* Forms & Search */
+.search-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.search-input, .search-button {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line-color);
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+.search-input {
+    flex-grow: 1;
+}
+
+.search-button {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-button:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Series List */
+.series-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 3rem;
+}
+
+.series-list li {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dotted var(--line-color);
+}

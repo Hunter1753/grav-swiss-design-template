@@ -1,0 +1,65 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+{% set query = uri.query('q') %}
+{% set search_type = uri.query('type')|default('projects') %}
+
+<article class="project-post">
+    <header class="project-header">
+        <h1>Archive Search</h1>
+    </header>
+
+    <form method="GET" action="{{ page.url }}" class="search-form">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search term..." required class="search-input">
+        
+        <select name="type" class="search-input">
+            <option value="projects" {% if search_type == 'projects' %}selected{% endif %}>Projects</option>
+            <option value="microblog" {% if search_type == 'microblog' %}selected{% endif %}>Microblog</option>
+        </select>
+        
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    {% if query %}
+        <h2 class="section-title" style="margin-top: 3rem;">Results for "{{ query }}"</h2>
+        
+        {# Select the right collection based on the dropdown #}
+        {% if search_type == 'microblog' %}
+            {% set collection = page.find('/microblog').children %}
+        {% else %}
+            {% set collection = page.collection({
+                'items': [
+                    {'@taxonomy': {'category': 'analog'}},
+                    {'@taxonomy': {'category': 'digital'}}
+                ]
+            }) %}
+        {% endif %}
+
+        {% set results_found = false %}
+        
+        <div class="search-results" style="margin-top: 2rem;">
+            {# Loop through all posts and check if the query is in the title or content #}
+            {% for p in collection if query|lower in p.title|lower or query|lower in p.content|lower %}
+                {% set results_found = true %}
+                
+                <article class="preview-block">
+                    {% if search_type == 'microblog' %}
+                        <div class="micro-date">{{ p.date|date("Y-m-d, H:i") }}</div>
+                        <div class="micro-content">{{ p.content|raw }}</div>
+                    {% else %}
+                        <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
+                        <div class="project-meta">
+                            <span class="meta-item">Published: <strong>{{ p.date|date("Y-m-d") }}</strong></span>
+                        </div>
+                        {{ p.summary(150)|raw }}
+                    {% endif %}
+                </article>
+            {% endfor %}
+            
+            {% if not results_found %}
+                <p><em>No matches found in the {{ search_type }} archive.</em></p>
+            {% endif %}
+        </div>
+    {% endif %}
+</article>
+{% endblock %}
