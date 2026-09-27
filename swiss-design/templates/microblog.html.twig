@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="microblog-archive">
-    <h1>Microblog Archive</h1>
+    <h1>{{ 'THEME_SWISS.MICROBLOG_ARCHIVE'|t }}</h1>
     <hr>
     
     {% set collection = page.collection() %}
@@ -14,7 +14,7 @@
             </div>
         </div>
     {% else %}
-        <p><em>No updates have been posted to the microblog yet.</em></p>
+        <p><em>{{ 'THEME_SWISS.NO_MICROBLOG_ARCHIVE'|t }}</em></p>
     {% endfor %}
     
     {# Grav Pagination #}

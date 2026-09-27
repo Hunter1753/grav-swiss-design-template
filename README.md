@@ -51,7 +51,7 @@ Project without Gallery
 │
 ├── Search              (/search)               [Template: search]
 │
-└── Error 404           (System routed)         [Template: error]
+└── Error               (System routed)         [Template: error]
 ```
 
 ### Templates
@@ -77,7 +77,7 @@ Project without Gallery
 When creating a new page using the **Project** template, the following custom metadata fields are available in the Admin Panel (or directly via YAML).
 
 *   **Category (`taxonomy.category`):** 
-    Must be set to either `[analog]` or `[digital]`. This dictates which overview page the project appears on.
+    This dictates which overview page the project appears on. All different categories are compiled and shown in the navbar
 *   **Featured in Showcase (`featured`):** 
     Setting this to `true` (or `1` in the Admin Panel toggle) pins the project to the **Showcase** block on the Homepage. It will still appear in its standard category folder and the "Latest" feed.
 *   **Series (`taxonomy.series`):** 

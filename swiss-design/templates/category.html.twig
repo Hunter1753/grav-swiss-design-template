@@ -16,13 +16,13 @@
                     <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
                     <div class="project-meta">
                         {% if p.header.time_spent %}
-                            <span class="meta-item">Time spent: <strong>{{ p.header.time_spent }}</strong></span>
+                            <span class="meta-item">{{ 'THEME_SWISS.TIME_SPENT'|t }}: <strong>{{ p.header.time_spent }}</strong></span>
                         {% endif %}
                     </div>
                     {{ p.summary(250)|raw }}
                 </article>
             {% else %}
-                <p><em>No projects have been archived in this section yet.</em></p>
+                <p><em>{{ 'THEME_SWISS.NO_CATEGORY'|t }}</em></p>
             {% endfor %}
         </section>
     </div>

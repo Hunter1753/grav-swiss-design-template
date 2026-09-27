@@ -8,15 +8,15 @@
             {{ page.header.http_response_code|default('404') }}
         </h1>
         <div class="project-meta" style="justify-content: center; margin-bottom: 1.5rem;">
-            <span class="meta-item">STATUS: <strong>DOCUMENT_NOT_FOUND</strong></span>
+            <span class="meta-item">{{ 'THEME_SWISS.ERROR_STATUS'|t }}: <strong>{{ 'THEME_SWISS.ERROR_NOT_FOUND'|t }}</strong></span>
         </div>
     </header>
 
     <section class="project-body" style="margin-top: 2rem;">
-        <p>The requested document has been misplaced, redacted, or never existed in this archive.</p>
+        <p>{{ 'THEME_SWISS.ERROR_NOT_FOUND'|t }}</p>
         
         <p style="margin-top: 3rem; font-family: 'Courier New', Courier, monospace;">
-            <a href="{{ base_url == '' ? '/' : base_url }}">&larr; Return to Home</a>
+            <a href="{{ base_url == '' ? '/' : base_url }}">{{ 'THEME_SWISS.BACK_DASHBOARD'|t }}</a>
         </p>
     </section>
 </article>

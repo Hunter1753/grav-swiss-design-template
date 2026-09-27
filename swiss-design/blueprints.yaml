@@ -1,8 +1,9 @@
 name: Swiss Design
-version: 1.0.0
+version: 1.1.0
 description: "A clean and simple no js twig theme for Grav 2 inspired by old manuals and the swiss design language."
 author:
-  name: "[Hunter1753](https://github.com/Hunter1753)"
+  name: Hunter1753
+  url: https://github.com/Hunter1753
 
 dependencies:
   - { name: grav, version: '>=2.0.0' }

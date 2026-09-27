@@ -3,17 +3,18 @@
 {% block content %}
 <article class="project-post">
     <header class="project-header">
-        <h1>Project Series</h1>
-        <p>A chronological index of ongoing projects.</p>
+        <h1>{{ 'THEME_SWISS.SERIES_HEADER'|t }}</h1>
+        <p>{{ 'THEME_SWISS.SERIES_HEADER_TEXT'|t }}</p>
     </header>
 
     {# Fetch all projects and order them oldest to newest so they read like a book #}
-    {% set all_projects = page.collection({
-        'items': [
-            {'@taxonomy': {'category': 'analog'}},
-            {'@taxonomy': {'category': 'digital'}}
-        ]
-    }).order('date', 'asc') %}
+    {% set active_categories = taxonomy.getTaxonomyItemKeys('category') %}
+    {% set query_items = [] %}
+    {% for cat in active_categories %}
+        {% set query_items = query_items|merge([{'@taxonomy': {'category': cat}}]) %}
+    {% endfor %}
+
+    {% set all_projects = page.collection({'items': query_items}) %}
     
     {# Extract unique series names #}
     {% set series_list = [] %}
@@ -40,7 +41,7 @@
                 </ul>
             {% endfor %}
         {% else %}
-            <p><em>No project series found. Tag a project with a 'Series' to see it here.</em></p>
+            <p><em>{{ 'THEME_SWISS.NO_SERIES'|t }}</em></p>
         {% endif %}
     </div>
 </article>

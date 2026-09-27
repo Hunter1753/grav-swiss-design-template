@@ -6,24 +6,24 @@
         <h1>{{ page.title }}</h1>
         
         <div class="project-meta">
-            <span class="meta-item">Published: <strong>{{ page.date|date("Y-m-d") }}</strong></span>
+            <span class="meta-item">{{ 'THEME_SWISS.PUBLISHED'|t }}: <strong>{{ page.date|date("Y-m-d") }}</strong></span>
 
             {% if page.header.taxonomy.category %}
-                <span class="meta-item">Section: <strong>{{ (page.header.taxonomy.category is iterable ? page.header.taxonomy.category|first : page.header.taxonomy.category)|capitalize }}</strong></span>
+                <span class="meta-item">{{ 'THEME_SWISS.SECTION'|t }}: <strong>{{ (page.header.taxonomy.category is iterable ? page.header.taxonomy.category|first : page.header.taxonomy.category)|capitalize }}</strong></span>
             {% endif %}
             
             {% if page.header.time_spent %}
-                <span class="meta-item">Time spent: <strong>{{ page.header.time_spent }}</strong></span>
+                <span class="meta-item">{{ 'THEME_SWISS.TIME_SPENT'|t }}: <strong>{{ page.header.time_spent }}</strong></span>
             {% endif %}
             
             {% if page.header.taxonomy.series %}
-                <span class="meta-item">Series: <strong>{{ page.header.taxonomy.series }}</strong></span>
+                <span class="meta-item">{{ 'THEME_SWISS.SERIES'|t }}: <strong>{{ page.header.taxonomy.series }}</strong></span>
             {% endif %}
         </div>
 
         {% if page.header.tools %}
         <div class="project-tools">
-            <strong>Tools used:</strong>
+            <strong>{{ 'THEME_SWISS.TOOLS'|t }}:</strong>
             {% for tool in page.header.tools %}
                 <code>{{ tool.name }}</code>{% if not loop.last %}, {% endif %}
             {% endfor %}
@@ -37,7 +37,7 @@
 
     {% if page.header.show_gallery and page.media.images|length > 0 %}
     <footer class="project-gallery">
-        <h3>Project Gallery</h3>
+        <h3>{{ 'THEME_SWISS.PROJECT_GALLERY'|t }}</h3>
         <div class="gallery-grid">
             {% for image in page.media.images %}
                 {# Links directly to the raw image, no JS lightbox #}

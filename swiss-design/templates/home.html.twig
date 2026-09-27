@@ -4,16 +4,16 @@
 <div class="dashboard">
     <section class="main-column">
         
-        {# Fix: Properly collect Analog OR Digital projects #}
-        {% set all_projects = page.collection({
-            'items': [
-                {'@taxonomy': {'category': 'analog'}},
-                {'@taxonomy': {'category': 'digital'}}
-            ]
-        }) %}
+        {% set active_categories = taxonomy.getTaxonomyItemKeys('category') %}
+        {% set query_items = [] %}
+        {% for cat in active_categories %}
+            {% set query_items = query_items|merge([{'@taxonomy': {'category': cat}}]) %}
+        {% endfor %}
+
+        {% set all_projects = page.collection({'items': query_items}) %}
 
         {# SHOWCASE #}
-        <h2 class="section-title">Showcase</h2>
+        <h2 class="section-title">{{ 'THEME_SWISS.SHOWCASE'|t }}</h2>
         {% set has_showcase = false %}
         
         {% for p in all_projects if p.header.featured %}
@@ -24,7 +24,7 @@
                     <em>
                         {{ (p.header.taxonomy.category is iterable ? p.header.taxonomy.category|first : p.header.taxonomy.category)|capitalize|default('Project') }}
                         {% if p.header.time_spent %}
-                            &mdash; Time spent: {{ p.header.time_spent }}
+                            &mdash; {{ 'THEME_SWISS.TIME_SPENT'|t }}: {{ p.header.time_spent }}
                         {% endif %}
                     </em>
                 </p>
@@ -33,11 +33,11 @@
         {% endfor %}
 
         {% if not has_showcase %}
-            <p style="margin-bottom: 2rem;"><em>No featured projects selected yet.</em></p>
+            <p style="margin-bottom: 2rem;"><em>{{ 'THEME_SWISS.NO_SHOWCASE'|t }}</em></p>
         {% endif %}
 
         {# LATEST #}
-        <h2 class="section-title">Latest Projects</h2>
+        <h2 class="section-title">{{ 'THEME_SWISS.LATEST'|t }}</h2>
         {% set latest_projects = all_projects.order('date', 'desc').slice(0, 5) %}
         
         {% for p in latest_projects %}
@@ -46,13 +46,13 @@
                 {{ p.summary(150)|raw }}
             </article>
         {% else %}
-            <p><em>No projects found.</em></p>
+            <p><em>{{ 'THEME_SWISS.NO_PROJECTS'|t }}</em></p>
         {% endfor %}
         
     </section>
 
     <aside class="microblog-column">
-        <h2 class="section-title">Microblog</h2>
+        <h2 class="section-title">{{ 'THEME_SWISS.MICROBLOG'|t }}</h2>
         {% set microblog_page = page.find('/microblog') %}
         
         {% if microblog_page %}
@@ -65,13 +65,13 @@
                     </div>
                 </div>
             {% else %}
-                <p><em>No updates yet.</em></p>
+                <p><em>{{ 'THEME_SWISS.NO_MICROBLOG'|t }}</em></p>
             {% endfor %}
         {% else %}
-            <p><em>Microblog folder missing.</em></p>
+            <p><em>{{ 'THEME_SWISS.MICROBLOG_MISSING'|t }}</em></p>
         {% endif %}
         
-        <a href="{{ base_url }}/microblog" class="view-all">View Archive &rarr;</a>
+        <a href="{{ base_url }}/microblog" class="view-all">{{ 'THEME_SWISS.VIEW_ARCHIVE'|t }}</a>
     </aside>
 </div>
 {% endblock %}
