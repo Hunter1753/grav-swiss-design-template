@@ -27,7 +27,7 @@ en:
     ERROR_NOT_FOUND: "DOCUMENT_NOT_FOUND"
     ERROR_TEXT: "The requested document has been misplaced, redacted, or never existed in this archive."
     SERIES_HEADER: "Project Series"
-    SERIES_HEADER_TEXT: "A chronological index of ongoing projects.
+    SERIES_HEADER_TEXT: "A chronological index of ongoing projects."
     NO_SERIES: "No project series found. Tag a project with a 'Series' to see it here."
     RESULTS_FOR: 'Results for "%s"'
     NO_MATCHES: "No matches found in the %s archive."

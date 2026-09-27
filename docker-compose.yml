@@ -1,0 +1,8 @@
+services:
+  grav:
+    build: .
+    ports:
+      - "8080:80"
+    # Optional: We map a local folder to the theme directory so you can edit files locally
+    volumes:
+      - ./swiss-design:/var/www/html/user/themes/swiss-design
