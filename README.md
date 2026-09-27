@@ -66,7 +66,7 @@ Project without Gallery
 
 - `default`: Standard Grav text page, used for individual microblog updates.
 
-- `series`: Automatically groups all projects site-wide by their series tag.
+- `series`: Automatically groups all projects site-wide by their series tag. (also add to taxonomy types)
 
 - `search`: Native query page for projects and micro-posts.
 
