@@ -104,3 +104,31 @@ tools:
     - name: C++
     - name: Assembly
     - name: QEMU
+
+### Needed Frontmatter
+
+#### Microblog
+
+```yaml
+title: 'Microblog'
+visible: false
+content:
+    items: '@self.children'
+    limit: 10           # Items per page
+    order:
+        by: date
+        dir: desc
+    pagination: true
+```
+
+#### Category
+
+```yaml
+title: 'CatName'
+visible: true
+content:
+    items: '@self.children'
+    order:
+        by: date
+        dir: desc
+```
