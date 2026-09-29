@@ -1,0 +1,34 @@
+{% set pagination = pagination|default(page.collection.params.pagination) %}
+
+{% if pagination|length > 1 %}
+<nav class="pagination-wrapper">
+    <ul class="pagination">
+        
+        {# Previous Button #}
+        {% if pagination.hasPrev %}
+            <li><a href="{{ base_url }}{{ pagination.prevUrl }}">{{ 'THEME_SWISS.PREV'|t }}</a></li>
+        {% else %}
+            <li class="disabled"><span>{{ 'THEME_SWISS.PREV'|t }}</span></li>
+        {% endif %}
+
+        {# Page Numbers #}
+        {% for paginate in pagination %}
+            {% if paginate.isCurrent %}
+                <li><span class="active">{{ paginate.number }}</span></li>
+            {% elseif paginate.isInDelta %}
+                <li><a href="{{ base_url }}{{ paginate.url }}">{{ paginate.number }}</a></li>
+            {% elseif paginate.isDeltaBorder %}
+                <li><span class="gap">&hellip;</span></li>
+            {% endif %}
+        {% endfor %}
+
+        {# Next Button #}
+        {% if pagination.hasNext %}
+            <li><a href="{{ base_url }}{{ pagination.nextUrl }}">{{ 'THEME_SWISS.NEXT'|t }}</a></li>
+        {% else %}
+            <li class="disabled"><span>{{ 'THEME_SWISS.NEXT'|t }}</span></li>
+        {% endif %}
+
+    </ul>
+</nav>
+{% endif %}

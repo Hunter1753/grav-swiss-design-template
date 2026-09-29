@@ -56,7 +56,7 @@
         {% set microblog_page = page.find('/microblog') %}
         
         {% if microblog_page %}
-            {% set micro_posts = microblog_page.children.order('date', 'desc').slice(0, 10) %}
+            {% set micro_posts = microblog_page.children().published().order('date', 'desc').slice(0, 10) %}
             {% for m in micro_posts %}
                 <div class="micro-post">
                     <div class="micro-date">{{ m.date|date("Y-m-d, H:i") }}</div>

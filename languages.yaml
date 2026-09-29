@@ -33,6 +33,8 @@ en:
     NO_MATCHES: "No matches found in the %s archive."
     PROJECTS: "Projects"
     UPDATED: "Updated"
+    PREV: "← Previous"
+    NEXT: "Next →"
 
 de:
   THEME_SWISS:
@@ -69,3 +71,5 @@ de:
     NO_MATCHES: "Keine Treffer im %s-Archiv gefunden."
     PROJECTS: "Projekte"
     UPDATED: "Bearbeitet"
+    PREV: "← Vorherige"
+    NEXT: "Nächste →"

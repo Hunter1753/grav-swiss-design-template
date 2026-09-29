@@ -273,3 +273,34 @@ html {
         gap: 1rem;
     }
 }
+
+/* --- Pagination --- */
+.pagination-wrapper {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    border-top: 1px solid var(--line-color, #ccc);
+    padding-top: 1rem;
+}
+
+.pagination {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.pagination .active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.pagination .disabled span {
+    color: #999;
+}
