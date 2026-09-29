@@ -93,6 +93,7 @@ When creating a new page using the **Project** template, the following custom me
 
 ```yaml
 title: 'Custom OS: Bootloader'
+date: 27.09.2026 3:00
 visible: false
 featured: true
 show_gallery: false
@@ -104,6 +105,7 @@ tools:
     - name: C++
     - name: Assembly
     - name: QEMU
+```
 
 ### Needed Frontmatter
 
