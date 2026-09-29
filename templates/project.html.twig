@@ -8,6 +8,10 @@
         <div class="project-meta">
             <span class="meta-item">{{ 'THEME_SWISS.PUBLISHED'|t }}: <strong>{{ page.date|date("Y-m-d") }}</strong></span>
 
+            {% if page.modified > page.date %}
+                <span class="meta-item">{{ 'THEME_SWISS.UPDATED'|t }}: <strong>{{ page.modified|date("Y-m-d") }}</strong></span>
+            {% endif %}
+
             {% if page.header.taxonomy.category %}
                 <span class="meta-item">{{ 'THEME_SWISS.SECTION'|t }}: <strong>{{ (page.header.taxonomy.category is iterable ? page.header.taxonomy.category|first : page.header.taxonomy.category)|capitalize }}</strong></span>
             {% endif %}

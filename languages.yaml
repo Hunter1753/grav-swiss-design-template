@@ -32,6 +32,7 @@ en:
     RESULTS_FOR: 'Results for "%s"'
     NO_MATCHES: "No matches found in the %s archive."
     PROJECTS: "Projects"
+    UPDATED: "Updated"
 
 de:
   THEME_SWISS:
@@ -67,3 +68,4 @@ de:
     RESULTS_FOR: 'Ergebnisse für "%s"'
     NO_MATCHES: "Keine Treffer im %s-Archiv gefunden."
     PROJECTS: "Projekte"
+    UPDATED: "Bearbeitet"
