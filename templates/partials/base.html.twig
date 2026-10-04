@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} | {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ url('theme://css/style.css') }}">
+    {# Register CSS with Grav #}
+    {% do assets.addCss('theme://css/style.css') %}
+    {# Tell Grav to output the compiled, minified pipeline here #}
+    {{ assets.css()|raw }}
     
     {# This overrides the accent color from style.css with the admin panel choice #}
     <style>
